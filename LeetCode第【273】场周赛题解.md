@@ -2,8 +2,6 @@
 
 ###### **有兴趣的同学可以关注一下我的LeetCode**[**个人账号**](https://leetcode-cn.com/u/chen-xiao-bin-5/)**。**
 
-###### **周赛群二维码放在评论区，有想一起打周赛的同学可以扫码进群。**
-
 ---
 
 ### 题目一、[5963. 反转两次的数字](https://leetcode-cn.com/problems/a-number-after-a-double-reversal/)【简单】
