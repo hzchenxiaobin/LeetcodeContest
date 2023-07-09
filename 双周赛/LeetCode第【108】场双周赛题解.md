@@ -308,11 +308,11 @@ class Solution:
 
 假设中间位置的格子是黑色的：
 
-<img src="/Users/chenbinbin/Library/Application Support/typora-user-images/image-20230709000719625.png" alt="image-20230709000719625" style="zoom: 33%;" />
+<img src="https://github.com/hzchenxiaobin/LeetcodeContest/blob/master/resource/pic/107bi/107-1.png?raw=true" style="zoom: 33%;" />
 
 那么对2x2矩阵结果有影响的有下面四种情况：
 
-![image-20230709000627383](/Users/chenbinbin/Library/Application Support/typora-user-images/image-20230709000627383.png)
+![](https://github.com/hzchenxiaobin/LeetcodeContest/blob/master/resource/pic/107bi/107-2.png?raw=true)
 
 在代码处理的时候，先将所有的四个2x2矩阵的左上角位置加入键值对中，然后数据处理时再判断该位置能不能作为2x2矩阵的左上角，坐标满足2x2矩阵左上角的条件是：x >= 0 and y >= 0 and x + 1 < m and y + 1 < n
 
