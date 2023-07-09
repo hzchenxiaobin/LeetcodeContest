@@ -308,7 +308,7 @@ class Solution:
 
 假设中间位置的格子是黑色的：
 
-<img src="https://github.com/hzchenxiaobin/LeetcodeContest/blob/master/resource/pic/107bi/107-1.png?raw=true" style="zoom: 33%;" />
+<img src="https://github.com/hzchenxiaobin/LeetcodeContest/blob/master/resource/pic/107bi/107-1.png?raw=true" style="zoom: 25%;" />
 
 那么对2x2矩阵结果有影响的有下面四种情况：
 
