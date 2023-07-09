@@ -223,7 +223,7 @@ dp[i-1][1] + 1 \quad 当nums1[i] >= nums2[i-1]\\
 1 
 \end{cases}
 $$
-2.选择nums2中的shuzi
+2.选择nums2中的数字
 $$
 dp[i][1]=
 \begin{cases}
