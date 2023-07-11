@@ -2,13 +2,13 @@
 
 
 
-**Leetcode竞赛：**https://leetcode.cn/contest/
+Leetcode竞赛：https://leetcode.cn/contest/
 
-**OI wiki:**https://oi-wiki.org/contest/resources/
+OI wiki:https://oi-wiki.org/contest/resources/
 
-**洛谷：**https://www.luogu.com.cn/
+洛谷：https://www.luogu.com.cn/
 
-**分数预测：**https://lccn.lbao.site/
+分数预测：https://lccn.lbao.site/
 
 
 
