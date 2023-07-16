@@ -278,9 +278,7 @@ class Solution:
 
 输入：word = "abcd",  forbidden = ["abc", "bc"]
 
-当窗口内的字符串为abc时，应该从短到长遍历，发现当长度为2时匹配bc
-
-
+![](https://github.com/hzchenxiaobin/LeetcodeContest/blob/master/resource/pic/354/354_1.png?raw=true)
 
 #### 代码
 
