@@ -1,6 +1,6 @@
-###### **本文主要解析LeetCode在xxxx年xx月xx日10：30组织的第【107】场双周赛题目，**[**竞赛链接**](https://leetcode-cn.com/contest/biweekly-contest-107)**。**
+###### **本文主要解析LeetCode在2023年6月24日22:30组织的第【107】场双周赛题目，**[**竞赛链接**](https://leetcode-cn.com/contest/biweekly-contest-107)**。**
 
-###### **有兴趣的同学可以关注一下我的LeetCode**[**个人账号**](https://leetcode-cn.com/u/chen-xiao-bin-5/)**。**
+###### **有兴趣的同学可以关注一下我的LeetCode**[**个人账号**](https://leetcode-cn.com/u/hzchenxiaobin/)**。**
 
 ---
 
