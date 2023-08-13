@@ -273,11 +273,74 @@ class Solution:
 
 #### 分析
 
+1.预处理所有的数字的质分数个数
 
+```python
+x = 10 ** 5
+score = [0 for i in range(x+1)]
+for i in range(2, x+1):
+    if score[i]:
+        continue
+    for j in range(i, x + 1, i):
+        score[j] += 1
+```
+
+2.遍历元素，通过单调栈求出元素左边第一个**大于等于**当前元素质数分数的索引和右边第一个**大于**当前元素的质数分数的索引。
+
+单调栈模板代码：
+
+```python
+stack = []
+for num in nums:
+    while stack and stack[-1] < num:
+        stack.pop()
+    stack.append(num)
+```
+
+3.从大到小排序元素并且遍历，通过相乘算出遍历到的元素出现的次数（对结果的影响次数）
+
+count = (i - left) * (right - i)
+
+4.通过快速幂计算结果
+
+res *= pow(num, count, MOD) 
 
 #### 代码
 
 ```python
+MAX = 10 ** 5
+prime_score = [0 for i in range(MAX + 1)]
+for i in range(2, MAX + 1):
+    if prime_score[i]:
+        continue
+    for j in range(i, MAX + 1, i):
+        prime_score[j] += 1
 
+class Solution:
+    def maximumScore(self, nums: List[int], k: int) -> int:
+        MOD = 10 ** 9 + 7
+        n = len(nums)
+        left = [-1 for i in range(n)]
+        right = [n for i in range(n)]
+        
+        # 单调栈
+        stack = []
+        for i,num in enumerate(nums):
+            while stack and prime_score[nums[stack[-1]]] < prime_score[num]:
+                right[stack.pop()] = i
+            if stack:
+                left[i] = stack[-1]
+            stack.append(i)
+        
+        # 快速幂
+        res = 1
+        for i, num, l, r in sorted(zip(range(n), nums, left, right), key=lambda z:-z[1]):
+            count = (i - l) * (r - i)
+            if count >= k:
+                res = res * pow(num, k, MOD) % MOD
+                break
+            res = res * pow(num, count, MOD) % MOD
+            k -= count
+        return res
 ```
 
