@@ -122,37 +122,171 @@ class Solution:
 
 ------
 
-### 题目三、【中等】
+### 题目三、[销售利润最大化](https://leetcode.cn/contest/weekly-contest-359/problems/maximize-the-profit-as-the-salesman/)【中等】
 
 #### 题目描述
 
+给你一个整数 `n` 表示数轴上的房屋数量，编号从 `0` 到 `n - 1` 。
 
+另给你一个二维整数数组 `offers` ，其中 `offers[i] = [starti, endi, goldi]` 表示第 `i` 个买家想要以 `goldi` 枚金币的价格购买从 `starti` 到 `endi` 的所有房屋。
+
+作为一名销售，你需要有策略地选择并销售房屋使自己的收入最大化。
+
+返回你可以赚取的金币的最大数目。
+
+**注意** 同一所房屋不能卖给不同的买家，并且允许保留一些房屋不进行出售。
+
+ 
+
+**示例 1：**
+
+```
+输入：n = 5, offers = [[0,0,1],[0,2,2],[1,3,2]]
+输出：3
+解释：
+有 5 所房屋，编号从 0 到 4 ，共有 3 个购买要约。
+将位于 [0,0] 范围内的房屋以 1 金币的价格出售给第 1 位买家，并将位于 [1,3] 范围内的房屋以 2 金币的价格出售给第 3 位买家。
+可以证明我们最多只能获得 3 枚金币。
+```
+
+**示例 2：**
+
+```
+输入：n = 5, offers = [[0,0,1],[0,2,10],[1,3,2]]
+输出：10
+解释：有 5 所房屋，编号从 0 到 4 ，共有 3 个购买要约。
+将位于 [0,2] 范围内的房屋以 10 金币的价格出售给第 2 位买家。
+可以证明我们最多只能获得 10 枚金币。
+```
+
+ 
+
+**提示：**
+
+- `1 <= n <= 10^5`
+- `1 <= offers.length <= 10^5`
+- `offers[i].length == 3`
+- `0 <= starti <= endi <= n - 1`
+- `1 <= goldi <= 10^3`
 
 #### 分析
 
+顺序dp问题。
 
+顺序遍历n，遍历到i时，dp数组中存的是到i为止最大的利润。
+
+步骤如下：
+
+1.对offers进行排序，以end作为排序的key，从小到大排序。
+
+2.遍历n，对于遍历到的i：
+
+​    a.dp[i] = dp[i-1]  -> 让dp[i]等于前面一个最大的利润，这个能保证当前值是最大利润。
+
+​    b.dp[i] = max(dp[i], dp[start - 1] + gold)  -> 算上end <= i的所有offer的最大值。
+
+3.返回最后一个值，即dp[-1]。
+
+
+
+处理步骤中有dp[i-1]和dp[start-1]，所以为了统一处理，对start和end都做了加1处理，房屋的编号从1到n。
 
 #### 代码
 
 ```python
-
+class Solution:
+    def maximizeTheProfit(self, n: int, offers: List[List[int]]) -> int:
+        dp = [0 for i in range(n+1)]
+        offers.sort(key=lambda x:x[1])
+        idx = 0
+        for i in range(1, n+1):
+            dp[i] = dp[i-1]
+            while idx < len(offers) and offers[idx][1] + 1<= i:
+                offer = offers[idx]
+                start,end,gold = offer[0] + 1, offer[1] + 1, offer[2]
+                dp[end] = max(dp[start - 1] + gold, dp[end])
+                idx += 1
+        return dp[-1]
 ```
 
 ------
 
-### 题目四、【困难】
+### 题目四、[找出最长等值子数组](https://leetcode.cn/contest/weekly-contest-359/problems/find-the-longest-equal-subarray/)【中等】
 
 #### 题目描述
 
+给你一个下标从 **0** 开始的整数数组 `nums` 和一个整数 `k` 。
 
+如果子数组中所有元素都相等，则认为子数组是一个 **等值子数组** 。注意，空数组是 **等值子数组** 。
+
+从 `nums` 中删除最多 `k` 个元素后，返回可能的最长等值子数组的长度。
+
+**子数组** 是数组中一个连续且可能为空的元素序列。
+
+ 
+
+**示例 1：**
+
+```
+输入：nums = [1,3,2,3,1,3], k = 3
+输出：3
+解释：最优的方案是删除下标 2 和下标 4 的元素。
+删除后，nums 等于 [1, 3, 3, 3] 。
+最长等值子数组从 i = 1 开始到 j = 3 结束，长度等于 3 。
+可以证明无法创建更长的等值子数组。
+```
+
+**示例 2：**
+
+```
+输入：nums = [1,1,2,2,1,1], k = 2
+输出：4
+解释：最优的方案是删除下标 2 和下标 3 的元素。 
+删除后，nums 等于 [1, 1, 1, 1] 。 
+数组自身就是等值子数组，长度等于 4 。 
+可以证明无法创建更长的等值子数组。
+```
+
+ 
+
+**提示：**
+
+- `1 <= nums.length <= 10^5`
+- `1 <= nums[i] <= nums.length`
+- `0 <= k <= nums.length`
 
 #### 分析
 
+滑动窗口（双指针）
 
+1.取滑动窗口最左边的值nums[l]作为比较对象
+
+2.如果窗口内的非nums[l]元素个数小于等于k，那么说明可以通过删除至多k个元素形成等值数组
+
+3.如果窗口内的非nums[l]元素个数大于k，那么说明不能通过删除至多k个元素形成等值数组，需要将左边的指针向右移动一个位置。
+
+4.反复执行以上步骤，取最大值。
+
+
+
+特殊处理：由于最后的窗口内，最多元素个数的并不一定是最左边的元素，所以要遍历最后的窗口，取得最大值。
 
 #### 代码
 
 ```python
-
+class Solution:
+    def longestEqualSubarray(self, nums: List[int], k: int) -> int:
+        l = 0
+        n = len(nums)
+        map = dict()
+        res = 0
+        for r in range(n):
+            map[nums[r]] = map.get(nums[r], 0) + 1
+            while l < r and r + 1 - l - map[nums[l]] > k:
+                map[nums[l]] = map[nums[l]] - 1
+                l += 1
+            res = max(res, map[nums[l]])
+        res = max(res, max(map.values()))
+        return res
 ```
 
