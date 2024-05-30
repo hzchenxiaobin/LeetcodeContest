@@ -1,4 +1,4 @@
-###### **本文主要解析LeetCode在2024年5月26日10:30组织的第【398】场周赛题目，**[**竞赛链接**](https://leetcode.cn/contest/weekly-contest-398)**。**
+###### **本文主要解析LeetCode在2024年5月19日10:30组织的第【398】场周赛题目，**[**竞赛链接**](https://leetcode.cn/contest/weekly-contest-398)**。**
 
 ---
 
