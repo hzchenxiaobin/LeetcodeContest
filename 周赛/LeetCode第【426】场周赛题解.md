@@ -362,7 +362,7 @@ public:
 
 示例1：
 
-![img](../resource/pic/426/1.png)
+![img](https://github.com/hzchenxiaobin/LeetcodeContest/blob/master/resource/pic/426/1.png?raw=true)
 
 
 
